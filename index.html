@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="theme-color" content="#040A13">
-<script>document.documentElement.classList.add("js")</script>
+<script>document.documentElement.classList.add("js");(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark")t="dark";document.documentElement.dataset.theme=t;})()</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ali Nawaz | GIS Analyst, Zoning Analyst, Remote Sensing Specialist, Geospatial Data Analyst</title>
 <meta name="description" content="Portfolio of Ali Nawaz: zoning and parcel data, geospatial analysis, remote sensing and GIS automation. Maps, projects, code and experience.">
 <meta property="og:title" content="Ali Nawaz | GIS Analyst">
 <meta property="og:description" content="Zoning data, spatial analysis, remote sensing and GIS automation.">
-<meta property="og:image" content="assets/og.jpg">
+<meta property="og:image" content="https://alinawaz03943-cloud.github.io/Portfolio-2/assets/og.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%97%BA%EF%B8%8F%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -297,16 +297,108 @@ html.js .rv:not(.in){animation:rvsafe .01s 3.5s forwards}
  .globewrap{transform:none}
 }
 
+/* ===== fixes: nav tools, mobile menu, email size ===== */
+.nav-tools{display:flex;align-items:center;gap:.4rem;flex:none}
+.icon-btn{display:inline-grid;place-items:center;width:40px;height:40px;padding:0;border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--ink);cursor:pointer;transition:border-color .25s,background .25s}
+.icon-btn:hover{border-color:var(--teal);background:rgba(34,211,238,.1)}
+.icon-btn svg{width:18px;height:18px}
+.theme-btn .moon{display:none}
+html[data-theme=light] .theme-btn .sun{display:none}
+html[data-theme=light] .theme-btn .moon{display:block}
+.menu-btn{display:none}
+.menu-btn span,.menu-btn span::before,.menu-btn span::after{display:block;width:18px;height:1.5px;background:currentColor;transition:transform .25s,background .25s}
+.menu-btn span{position:relative}
+.menu-btn span::before,.menu-btn span::after{content:"";position:absolute;left:0}
+.menu-btn span::before{top:-6px}.menu-btn span::after{top:6px}
+.nav.open .menu-btn span{background:transparent}
+.nav.open .menu-btn span::before{transform:translateY(6px) rotate(45deg)}
+.nav.open .menu-btn span::after{transform:translateY(-6px) rotate(-45deg)}
+@media (max-width:1200px){
+ .menu-btn{display:inline-grid}
+ .nav nav{display:none;position:absolute;top:100%;left:0;right:0;overflow:visible;overflow-y:auto;max-height:calc(100vh - 58px);background:var(--paper);border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
+ .nav.open nav{display:block}
+ .nav ul{flex-direction:column;gap:0;max-width:1120px;margin:0 auto;padding:.4rem 1.25rem 1rem}
+ .nav li a{display:block;padding:.8rem 0;border-bottom:1px solid var(--line);font-size:1rem}
+ .nav li:last-child a{border-bottom:0}
+}
+.contact .big{font-size:clamp(1.15rem,2.4vw,1.85rem);word-break:normal;overflow-wrap:anywhere}
+@media (max-width:860px){.contact .big{font-size:clamp(1.05rem,5.2vw,1.85rem)}}
+
+/* ===== top bar ===== */
+.nav{height:64px;background:rgba(4,10,19,.72);-webkit-backdrop-filter:saturate(1.3) blur(14px);backdrop-filter:saturate(1.3) blur(14px);border-bottom:1px solid transparent;transition:border-color .3s,background-color .3s}
+.nav.scrolled{background:rgba(4,10,19,.92);border-bottom-color:var(--line)}
+.nav .wrap{height:100%;gap:1rem}
+.brand{display:inline-flex;align-items:center;gap:.7rem;background:none;color:var(--ink);font:700 1.02rem var(--head);letter-spacing:-.01em}
+.mark{display:grid;place-items:center;width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--teal),var(--moss));color:#031018;font:800 .7rem/1 var(--head);letter-spacing:.04em;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.nav nav{margin-left:auto;align-self:center;overflow:visible;padding:4px 0}
+.nav ul{gap:.1rem;align-items:center}
+.nav li{display:flex;align-items:center}
+.nav li a{position:relative;padding:.5rem .6rem;border-radius:8px;color:var(--muted);font-size:.9rem;line-height:1.2;font-weight:500;transition:color .2s,background-color .2s}
+.nav li a:hover{color:var(--ink);background:rgba(255,255,255,.05)}
+.nav li a[aria-current="true"]{color:var(--ink)}
+.nav li a[aria-current="true"]::after{content:"";position:absolute;left:50%;bottom:-.15rem;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:var(--teal)}
+.nav li a.nav-cta{display:inline-flex;align-items:center;margin-left:.3rem;padding:.42rem .95rem;border:1px solid rgba(34,211,238,.45);border-radius:999px;color:var(--ink)}
+.nav li a.nav-cta:hover{background:var(--teal);border-color:var(--teal);color:#031018}
+.nav li a.nav-cta[aria-current="true"]::after{display:none}
+.nav-tools{margin-left:.2rem;padding-left:.7rem;border-left:1px solid var(--line)}
+.icon-btn{width:38px;height:38px;border-radius:999px}
+html[data-theme=light] .nav li a:hover{background:rgba(8,145,178,.08)}
+html[data-theme=light] .mark{color:#fff}
+@media (max-width:1200px){
+ .nav-tools{margin-left:auto;padding-left:0;border-left:0}
+ .nav nav{margin-left:0}
+ .nav ul{gap:0;padding:.5rem 1.25rem 1.25rem;align-items:stretch}
+ .nav li{display:block}
+ .nav li a{display:block;padding:.85rem .25rem;border-radius:0;border-bottom:1px solid var(--line);font-size:1rem}
+ .nav li a:hover{background:none}
+ .nav li a[aria-current="true"]{color:var(--teal)}
+ .nav li a[aria-current="true"]::after{display:none}
+ .nav li:last-child a{border-bottom:0}
+ .nav li a.nav-cta{display:block;margin:1.1rem 0 0;padding:.9rem;border:0;border-radius:12px;background:var(--teal);color:#031018;text-align:center;font-weight:600}
+ .nav li a.nav-cta:hover{background:var(--teal);color:#031018}
+}
+
+/* ===== light theme ===== */
+html[data-theme=light]{--paper:#FFFFFF;--panel:rgba(244,247,250,.92);--ink:#0B1620;--muted:#4B5D6C;--line:rgba(15,50,75,.14);--teal:#0891B2;--moss:#059669;--amber:#D97706;--plum:#7C3AED;--tealink:#0E7490;--shadow:0 10px 30px rgba(15,40,60,.10);color-scheme:light;background:#fff}
+html[data-theme=light] body::before{background:#fff radial-gradient(1200px 700px at 80% -10%,rgba(8,145,178,.08),transparent 60%);background-size:auto}
+html[data-theme=light] body::after{background-image:linear-gradient(rgba(8,100,140,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(8,100,140,.06) 1px,transparent 1px)}
+html[data-theme=light] .nav{background:rgba(255,255,255,.86)}
+html[data-theme=light] .brand{background:none;color:var(--ink)}
+html[data-theme=light] .hero h1{background:linear-gradient(95deg,#0B1620 12%,#0E7490 58%,#047857);-webkit-background-clip:text;background-clip:text}
+html[data-theme=light] .stats dt{background:linear-gradient(95deg,#0B1620,#0E7490);-webkit-background-clip:text;background-clip:text}
+html[data-theme=light] .contact .big a{background:linear-gradient(95deg,#0B1620,#0E7490 60%,#047857);-webkit-background-clip:text;background-clip:text}
+html[data-theme=light] .roles{background:#fff;border-color:rgba(8,145,178,.4);box-shadow:0 8px 24px rgba(15,40,60,.08)}
+html[data-theme=light] .btn{border-color:rgba(8,145,178,.45)}
+html[data-theme=light] .btn:hover{color:var(--ink);background:rgba(8,145,178,.1);box-shadow:0 6px 18px rgba(8,145,178,.2)}
+html[data-theme=light] .btn.primary,html[data-theme=light] .btn.primary:hover{color:#031018}
+html[data-theme=light] .feed{background:#fff;border-color:rgba(8,145,178,.35);box-shadow:0 18px 40px rgba(15,40,60,.16)}
+html[data-theme=light] .stats{background:var(--panel)}
+html[data-theme=light] .fig{background:repeating-linear-gradient(45deg,#eef3f7,#eef3f7 8px,#e6edf2 8px,#e6edf2 16px)}
+html[data-theme=light] .zleg button,html[data-theme=light] .chips button{background:#fff}
+html[data-theme=light] .zleg button:hover,html[data-theme=light] .zleg button[aria-pressed=true],html[data-theme=light] .chips button:hover,html[data-theme=light] .chips button.on{background:rgba(8,145,178,.1)}
+html[data-theme=light] .zsvg .bg{fill:#EEF4F8}
+html[data-theme=light] .zp{stroke:rgba(15,60,90,.35)}
+html[data-theme=light] .mapbox .tag{background:rgba(255,255,255,.9)}
+html[data-theme=light] .node rect{fill:#fff;stroke:rgba(8,145,178,.4)}
+html[data-theme=light] .node.on rect{fill:#E8F7F1;stroke:var(--moss)}
+html[data-theme=light] .edge{stroke:rgba(8,145,178,.45)}
+html[data-theme=light] .portrait{box-shadow:0 10px 30px rgba(15,40,60,.12)}
+html[data-theme=light] footer{background:var(--panel)}
+
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="nav"><div class="wrap">
-  <a class="brand" href="#top">Ali Nawaz</a>
-  <nav aria-label="Sections"><ul>
+<header class="nav" id="nav"><div class="wrap">
+  <a class="brand" href="#top"><span class="mark" aria-hidden="true">AN</span>Ali Nawaz</a>
+  <nav aria-label="Sections" id="site-menu"><ul>
     <li><a href="#about">About</a></li><li><a href="#experience">Experience</a></li><li><a href="#expertise">Expertise</a></li>
-    <li><a href="#zoning">Zoning</a></li><li><a href="#remote">Remote Sensing</a></li><li><a href="#automation">Automation</a></li><li><a href="#projects">Projects</a></li><li><a href="#research">Research</a></li><li><a href="#education">Education</a></li><li><a href="#contact">Contact</a></li>
+    <li><a href="#zoning">Zoning</a></li><li><a href="#remote">Remote Sensing</a></li><li><a href="#automation">Automation</a></li><li><a href="#projects">Projects</a></li><li><a href="#research">Research</a></li><li><a href="#education">Education</a></li><li><a class="nav-cta" href="#contact">Contact</a></li>
   </ul></nav>
+  <div class="nav-tools">
+    <button type="button" class="icon-btn theme-btn" id="themebtn" aria-label="Switch to light theme"><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></button>
+    <button type="button" class="icon-btn menu-btn" id="menubtn" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu"><span></span></button>
+  </div>
 </div></header>
 
 <main id="main">
@@ -339,7 +431,7 @@ html.js .rv:not(.in){animation:rvsafe .01s 3.5s forwards}
 </dl></div></section>
 
 <section id="about"><div class="wrap about">
-  <div class="side"><img class="portrait" src="assets/profile.webp" srcset="assets/profile-s.webp 400w, assets/profile.webp 900w" sizes="260px" alt="Portrait of Ali Nawaz" width="720" height="720">
+  <div class="side"><img class="portrait" src="assets/profile.webp" srcset="assets/profile-s.webp 400w, assets/profile.webp 720w" sizes="260px" alt="Portrait of Ali Nawaz" width="720" height="720">
     <div><button type="button" class="fig " data-set="about" data-full="assets/-my-first-map-in-career.webp" data-cap="My First Map in Career"><img src="assets/-my-first-map-in-career-t.webp" alt="My First Map in Career" width="480" height="640" loading="lazy" decoding="async"></button><small>My first map</small></div></div>
   <div class="about-text">
     <h2>About</h2>
@@ -446,6 +538,27 @@ html.js .rv:not(.in){animation:rvsafe .01s 3.5s forwards}
 
 <script>
 (function(){
+  // Theme: dark or light, remembered between visits.
+  var root=document.documentElement,tb=document.getElementById('themebtn'),meta=document.querySelector('meta[name="theme-color"]');
+  function applyTheme(t){root.dataset.theme=t;tb.setAttribute('aria-label',t==='light'?'Switch to dark theme':'Switch to light theme');if(meta)meta.content=t==='light'?'#FFFFFF':'#040A13';}
+  applyTheme(root.dataset.theme==='light'?'light':'dark');
+  tb.addEventListener('click',function(){var t=root.dataset.theme==='light'?'dark':'light';applyTheme(t);try{localStorage.setItem('theme',t)}catch(e){}});
+
+  // Mobile menu
+  var nav=document.getElementById('nav'),mb=document.getElementById('menubtn');
+  function setMenu(o){nav.classList.toggle('open',o);mb.setAttribute('aria-expanded',o);mb.setAttribute('aria-label',o?'Close menu':'Open menu');}
+  mb.addEventListener('click',function(){setMenu(!nav.classList.contains('open'))});
+  document.getElementById('site-menu').addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false)});
+  document.addEventListener('click',function(e){if(nav.classList.contains('open')&&!nav.contains(e.target))setMenu(false)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('open')){setMenu(false);mb.focus()}});
+  addEventListener('resize',function(){if(innerWidth>1200)setMenu(false)});
+  addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>8)},{passive:true});
+
+  // Mark the section in view so the top bar shows where you are
+  var links=[].slice.call(document.querySelectorAll('#site-menu a'));
+  var spy=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;links.forEach(function(a){if(a.getAttribute('href')==='#'+e.target.id)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')})})},{rootMargin:'-40% 0px -55% 0px'});
+  ['about','experience','expertise','zoning','remote','automation','projects','research','education','contact'].forEach(function(id){var s=document.getElementById(id);if(s)spy.observe(s)});
+
   // Image-path safety net: if an image 404s, retry common upload layouts, then show a placeholder.
   var PFX=['','./','ali-nawaz-portfolio/','portfolio/','docs/'];
   document.addEventListener('error',function(e){var im=e.target;if(!im||im.tagName!=='IMG')return;var o=im.dataset.o||im.getAttribute('src'),k=+(im.dataset.k||0)+1;
@@ -625,14 +738,12 @@ var lg=document.getElementById('qalog');if(lg){var LN=['<b>&rsaquo;</b> load lay
  if(RM){rows=LN;paint();}else setInterval(function(){if(document.hidden)return;rows.push(LN[q++%LN.length]);if(rows.length>7)rows.shift();paint();},1100);}
 })();
 
-(function(){ /* ---- scroll reveal, counters, parallax ---- */
+(function(){ /* ---- scroll reveal, parallax ---- */
 var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 var T=document.querySelectorAll('section:not(.hero) h2,section:not(.hero) .lede,.job,.proj,.ev,.skills>div,.glass,.certs figure,details.res,.edu li,.about-text p,.stats div,.contact dl,.code li,.lab .real h3');
 [].forEach.call(T,function(e,i){if(e.classList.contains('rv'))return;e.classList.add('rv');e.style.setProperty('--i',i%4);});
-function count(el){var m=/^([\d,]+)(.*)$/.exec(el.textContent.trim());if(!m||m[1].replace(/,/g,'')==='2023'||RM)return;var to=+m[1].replace(/,/g,''),t0=performance.now();
- (function s(n){var p=Math.min(1,(n-t0)/1300),e=1-Math.pow(1-p,3);el.textContent=Math.round(to*e).toLocaleString('en-US')+m[2];if(p<1)requestAnimationFrame(s)})(t0);}
 if(!('IntersectionObserver' in window)||RM){[].forEach.call(document.querySelectorAll('.rv'),function(e){e.classList.add('in')});}
-else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');var d=e.target.querySelector&&e.target.querySelector('dt');if(d)count(d);io.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -6% 0px'});
+else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -6% 0px'});
  [].forEach.call(document.querySelectorAll('.rv'),function(e){io.observe(e)});}
 if(!RM){var tk=0,root=document.documentElement;addEventListener('scroll',function(){if(tk)return;tk=1;requestAnimationFrame(function(){var y=scrollY;root.style.setProperty('--sy',(-y*.06)+'px');root.style.setProperty('--gy',(y<900?y*.08:72)+'px');tk=0})},{passive:true});}
 })();
